@@ -1,9 +1,7 @@
 <?php
-    require './init.php';
-    $db = new Db();
-    $method = new Methods();
+    require 'init.php';
 
-    $method->test2();
+    $method = $methods->test2();
     // test();
 ?>
 <!DOCTYPE html>

@@ -2,7 +2,7 @@
 	/**
 	This is the database connection class
 		 */
-	class Eed
+	class Eed extends Db
 	{
 		
 		public function baseurl(){

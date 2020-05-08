@@ -1,5 +1,5 @@
 <?php
-	class Methods{
+	class Methods extends Eed{
 
 //PROCESSING UPLOAD FILES
 	public function get_file_name($action,$file_ref){

@@ -1,0 +1,27 @@
+label{
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.card-login, .card-login a{
+	color: #fff;
+}
+
+.notify{
+	height: 50px;
+	margin-top: 3%;
+}
+
+.notify-error{
+	background-color: red;
+	border-radius: 5px;
+	padding: 3%;
+	color: #fff;
+}
+
+.notify-success{
+	background-color: green;
+	border-radius: 5px;
+	padding: 3%;
+	color: #fff;
+}

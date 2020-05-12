@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+<?php
+    require "init.php";
+    session_start();
+    $is_admin = $_SESSION['is_admin'];
+    $login_id = $_SESSION['login_id'];
+
+    $auth = $eed->customQuery("SELECT * FROM user_login WHERE username = '{$login_id}'");
+    $run_auth = $auth->fetchAll(PDO::FETCH_OBJ);
+    foreach($run_auth as $auth):
+        $access_code = $auth->is_admin;
+    endforeach;
+    if($access_code == $is_admin){
+        echo "THIS IS THE ADMIN PAGE";
+    }else{
+        echo "THIS IS THE INSTRUCTOR PAGE";
+    }
+?>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -7,15 +24,15 @@
         <meta name="description" content="" />
         <meta name="author" content="FPI Programmers Hub Executive 2019/2020 set" />
         <title>Dashboard - FPI EED Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="./asset/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">Start Bootstrap</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
-            ><!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            > Navbar Search-->
+            <!--<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                     <div class="input-group-append">
@@ -23,7 +40,7 @@
                     </div>
                 </div>
             </form>
-            <!-- Navbar-->
+            Navbar
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -657,12 +674,13 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="./asset/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        <script src="asset/demo/datatables-demo.js"></script>
     </body>
 </html>
+ -->

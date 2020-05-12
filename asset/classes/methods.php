@@ -1,37 +1,17 @@
 <?php
-	class Methods extends Eed{
+	class Methods extends File_processing{
 
-//PROCESSING UPLOAD FILES
-	public function get_file_name($action,$file_ref){
-		if(isset($_POST[$action])){
-			return $name = $_FILES[$file_ref]['name'];
-		}
+	public function sanitizeString($data){
+		$data = filter_var($data, FILTER_SANITIZE_STRING);
+		return $data;
 	}
 
-	public function get_extension($action,$file_ref){
-			if(isset($_POST[$action])){
-			$upload = $_FILES[$file_ref]['name'];
-			$file_extension = pathinfo($upload, PATHINFO_EXTENSION);
-			return $file_extension;
-		}
+	public function sanitizeEmail($data){
+		$data = filter_var($data, FILTER_VALIDATE_EMAIL);
+		return $data;
 	}
 
-	public function get_size($action,$file_ref){
-		if(isset($_POST[$action])){
-			$size = $_FILES[$file_ref]['size'];
-			$size = $size * 0.001; // to kilobyte
-			
-			return round($size);
-		}
-	}
-
-	public function get_tmp_name($action,$file_ref){
-		if(isset($_POST[$action])){
-			return $tmp_name = $_FILES[$file_ref]['tmp_name'];
-		}
-	}
-
-	public function test2(){
+	public function testMethodClass(){
 		echo "methods loading";
 	}
 

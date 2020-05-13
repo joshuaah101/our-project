@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$("#user-login").on("submit", function(eed){
 		eed.preventDefault();
 		var formData = $(this).serialize();
-		
+		$("#submit").addClass("disabled");
 		$.ajax({
 			type : "POST",
 			data : formData,
@@ -17,7 +17,7 @@ $(document).ready(function(){
 				if(req == 200){
 					$(".notify").fadeIn(2000).html("<pre class='small notify-success text-center'>Login Successful</pre>");
 					setTimeout(function(){
-						location.href = "admin.php";
+						location.href = "redirect.php";
 					}, 3000);
 					$("#user-login").trigger("reset");
 				}else if(req == 404){

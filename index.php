@@ -1,7 +1,3 @@
-<?php
-    require 'init.php';
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +27,7 @@
                                             <!-- <div class="form-group">
                                                 <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
                                             </div> -->
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Forgot Password?</a><button class="btn btn-warning" type="submit">Login</button></div>
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Forgot Password?</a><button class="btn btn-warning" id="submit" type="submit">Login</button></div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
@@ -69,7 +65,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="./asset/js/scripts.js"></script>
-        <script src="./asset/js/eed.js"></script>
         <script src="./asset/js/eed.js"></script>
     </body>
 </html>

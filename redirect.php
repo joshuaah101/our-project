@@ -11,11 +11,11 @@
     endforeach;
     if($access_code == $is_admin){
         echo "<script>
-                location.href = 'users/admin.php'
+                location.href = 'users/admin.php?dashboard'
              </script>";
     }else{
         echo "<script>
-                location.href = 'users/instructor.php'
+                location.href = 'users/instructor.php?dashboard'
              </script>";
     }
 ?>

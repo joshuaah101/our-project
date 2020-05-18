@@ -37,7 +37,7 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="gender" class="form-control form-control-md" id="gender" required>
+                        <select name="department" class="form-control form-control-md" id="department" required>
                             <option value="">Department</option>
                             <?php 
                                 $query = $eed->customQuery("SELECT * FROM department ORDER BY department ASC");
@@ -48,13 +48,13 @@
                             <option value="<?php echo $dept; ?>"><?php echo $dept; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <label for="firstname" class="small text-success">Department</label>
+                        <label for="department" class="small text-success">Department</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="gender" class="form-control form-control-md" id="gender" required>
+                        <select name="position" class="form-control form-control-md" id="position" required>
                             <option value="">Position</option>
                             <?php 
                             $pos = $eed->customQuery("SELECT * FROM position ORDER BY position ASC");
@@ -65,7 +65,7 @@
                             <option value="<?php echo $position; ?>"><?php echo $position; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <label for="firstname" class="small text-success">Position</label>
+                        <label for="position" class="small text-success">Position</label>
                     </div>
                 </div>
                 <?php 

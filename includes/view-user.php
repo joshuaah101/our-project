@@ -19,15 +19,7 @@
                                     <th>Department</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>User-Id</th>
-                                    <th>Full Name</th>
-                                    <th>Gender</th>
-                                    <th>Position</th>
-                                    <th>Department</th>
-                                </tr>
-                            </tfoot>
+                            
                             <tbody>
                                 <?php 
                                 $query = $eed->customQuery("SELECT * FROM instructor ORDER BY surname ASC");

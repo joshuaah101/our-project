@@ -12,10 +12,10 @@
                     $action = $_GET['manage-user'];
                     if($action == 'add'){
                         include 'add-user.php';
-                    }elseif($action == 'modify'){
+                    }if($action == 'modify'){
                         include 'modify-user.php';
                     }
-            }
+                }
             ?>
         </div>
     </main>

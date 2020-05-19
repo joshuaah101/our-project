@@ -25,6 +25,11 @@ class Db{
 		$this->stmt = $this->conn->query($query);
 		return $this->stmt;
 	}
+
+	public function addUser($data){
+		$this->stmt = $this->conn->query("INSERT INTO instructor(uid, surname, firstname, midname, gender, department, position) VALUES('{$data->user_id}','{$data->surname}','{$data->firstname}','{$data->midname}','{$data->gender}','{$data->department}','{$data->position}')");
+		return $this->stmt;
+	}
 }
 
 ?>

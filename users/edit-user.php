@@ -114,8 +114,6 @@
                 <li class="breadcrumb-item active"><i class="fas fa-edit"> Edit a user</i></li>
             </ol>
             
-
-
 <div class="card mb-4">
     <div class="card-body">
         <form action="" method="post" id="add-user">

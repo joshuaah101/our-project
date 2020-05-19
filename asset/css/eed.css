@@ -7,7 +7,7 @@ label{
 	color: #fff;
 }
 
-.notify{
+.notify, .add-user-notify{
 	height: 50px;
 	margin-top: 3%;
 }

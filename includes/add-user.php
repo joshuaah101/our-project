@@ -77,10 +77,16 @@
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-plus"></i> Create User</button>
+                        <button class="btn btn-success btn-block" id="submit-add-user" type="submit"><i class="fas fa-plus"></i> Create User</button>
                     </div>
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-4 add-user-notify">
+            <!-- notification appears here -->
+        </div>
     </div>
 </div>

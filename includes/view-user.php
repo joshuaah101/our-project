@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4"><i class="fas fa-eye"></i> View User</h1>
+            <h3 class="mt-4"><i class="fas fa-eye"></i> View User</h3>
             <ol class="breadcrumb mb-4 mt-3">
                 <li class="breadcrumb-item active"><i class="card-body text-center"><i class="fas fa-eye"></i> View user</i></li>
             </ol>

@@ -81,4 +81,41 @@ $(document).ready(function(){
 			}
 		})
 	});
+
+$("#update-user").on("submit", function(e){
+		e.preventDefault();
+		var formData = $(this).serialize();
+		$("#submit-update-user").addClass("disabled");
+		$.ajax({
+			type : "POST",
+			data : formData,
+			cache : false,
+			url : "../ajax-files/update-user-api.php",
+			beforeSend : function(){
+				console.log("Updating User");
+			},
+			success : function(xhr){
+				console.log(xhr);
+				var req = $.trim(xhr);
+				if(req == 200){
+					$(".update-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
+					setTimeout(function(){
+						$(".update-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> User Details Updated!</pre>");
+						location.href = "admin.php?manage-user=modify";
+					}, 4000);
+					$("#update-user").trigger("reset");
+				}else if(req == 300){
+					$(".update-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'> <i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
+					setTimeout(function(){
+						$(".update-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> An Error Occurred, try again</pre>");
+						location.href = "admin.php?manage-user=modify";
+					}, 4000);
+					$("#update-user").trigger("reset");
+				};
+			},
+			error : function(error){
+				console.log(error);
+			}
+		})
+	});
 });

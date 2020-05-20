@@ -11,6 +11,7 @@
         <meta name="description" content="" />
         <meta name="author" content="FPI Programmers Hub Executive 2019/2020 set" />
         <title>Dashboard - FPI EED Admin</title>
+        <link href="../asset/css/eed.css" rel="stylesheet" />
         <link href="../asset/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -107,16 +108,16 @@
     <div id="layoutSidenav_content">
         <main>
         <div class="container-fluid">
-            <h1 class="mt-4"><a href="admin.php?manage-user=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h1>
-            <h1><i class="fas fa-edit"></i> Edit User</h1>
+            <h5 class="mt-4"><a href="admin.php?manage-user=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h5>
+            <h4><i class="fas fa-edit"></i> Edit User</h4>
             <ol class="breadcrumb mb-4 mt-3">
-                <li class="breadcrumb-item active"></li>
-                <li class="breadcrumb-item active"><i class="fas fa-edit"> Edit a user</i></li>
+                <li class="breadcrumb-item active"><i class="fas fa-edit"></i> <i>Edit a user</i></li>
+                <!-- <li class="breadcrumb-item"></li> -->
             </ol>
             
 <div class="card mb-4">
     <div class="card-body">
-        <form action="" method="post" id="add-user">
+        <form action="" method="post" id="update-user">
             <?php 
                 if(isset($_GET['edit'])){
                 $id = $_GET['edit'];
@@ -192,18 +193,24 @@
                     </div>
                 </div>
                
-
+            <input type="hidden" name="user_id" value="<?php echo $id->uid; ?>">
             </div>
             <?php endforeach; } ?>
 
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" type="submit"><i class="fas fa-edit"></i> Update User</button>
+                        <button class="btn btn-success btn-block" id="submit-update-user" type="submit"><i class="fas fa-edit"></i> Update User</button>
                     </div>
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-4 update-user-notify">
+            <!-- notification appears here -->
+        </div>
     </div>
 </div>
 </div>
@@ -228,6 +235,8 @@
         ?>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="../asset/js/jquery.min.js"></script>
+        <script src="../asset/js/eed.js"></script>
         <script src="../asset/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>

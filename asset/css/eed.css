@@ -7,9 +7,9 @@ label{
 	color: #fff;
 }
 
-.notify, .add-user-notify{
+.notify, .add-user-notify, .update-user-notify{
 	height: 50px;
-	margin-top: 3%;
+	margin-top: 2%;
 }
 
 .notify-error{

@@ -27,12 +27,12 @@ class Db{
 	}
 
 	public function addUser($data){
-		$this->stmt = $this->conn->query("INSERT INTO instructor(uid, surname, firstname, midname, gender, department, position) VALUES('{$data->user_id}','{$data->surname}','{$data->firstname}','{$data->midname}','{$data->gender}','{$data->department}','{$data->position}')");
+		$this->stmt = $this->conn->query("INSERT INTO instructor(uid, surname, firstname, midname, gender, department, vocation) VALUES('{$data->user_id}','{$data->surname}','{$data->firstname}','{$data->midname}','{$data->gender}','{$data->department}','{$data->vocation}')");
 		return $this->stmt;
 	}
 
 	public function updateUser($data){
-		$this->stmt = $this->conn->query("UPDATE instructor SET surname = '{$data->surname}', firstname = '{$data->firstname}', midname = '{$data->midname}', gender = '{$data->gender}', department = '{$data->department}', position = '{$data->position}' WHERE uid = '{$data->user_id}'");
+		$this->stmt = $this->conn->query("UPDATE instructor SET surname = '{$data->surname}', firstname = '{$data->firstname}', midname = '{$data->midname}', gender = '{$data->gender}', department = '{$data->department}', vocation = '{$data->vocation}' WHERE uid = '{$data->user_id}'");
 		return $this->stmt;
 	}
 }

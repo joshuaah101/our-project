@@ -10,10 +10,12 @@
         $access_code = $auth->is_admin;
     endforeach;
     if($access_code == $is_admin){
+        $_SESSION['user_role'] = "Admin";
         echo "<script>
                 location.href = 'users/admin.php?dashboard'
              </script>";
     }else{
+        $_SESSION['user_role'] = "Instructor";
         echo "<script>
                 location.href = 'users/instructor.php?dashboard'
              </script>";

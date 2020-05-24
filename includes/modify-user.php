@@ -8,7 +8,7 @@
                         <th>User-Id</th>
                         <th>Full Name</th>
                         <th>Gender</th>
-                        <th>Position</th>
+                        <th>Vocation</th>
                         <th>Department</th>
                         <th>Action</th>
                     </tr>
@@ -24,7 +24,7 @@
                         <td><?php echo $ins->uid; ?></td>
                         <td><?php echo $ins->surname." ".$ins->firstname." ".substr($ins->midname,0,1)."."; ?></td>
                         <td><?php echo $ins->gender; ?></td>
-                        <td><?php echo $ins->position; ?></td>
+                        <td><?php echo $ins->vocation; ?></td>
                         <td><?php echo $ins->department; ?></td>
                         <td><a href="edit-user.php?edit=<?php echo $ins->uid; ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> <a href="?manage-user=modify&delete=<?php echo $ins->uid; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a></td>
                     </tr>

@@ -8,7 +8,7 @@
 		$gender = $eed->sanitizeString($_POST['gender']);
 		$user_id = $eed->sanitizeString($_POST['user_id']);
 		$department = $eed->sanitizeString($_POST['department']);
-		$position = $eed->sanitizeString($_POST['position']);
+		$vocation = $eed->sanitizeString($_POST['vocation']);
 		
 		$inst = array(
 			"surname" => $surname,
@@ -17,7 +17,7 @@
 			"gender" => $gender,
 			"user_id" => $user_id,
 			"department" => $department,
-			"position" => $position
+			"vocation" => $vocation
 		);
 
 		$inst = (object)$inst;

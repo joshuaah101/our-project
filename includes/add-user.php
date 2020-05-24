@@ -54,18 +54,18 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="position" class="form-control form-control-md" id="position" required>
-                            <option value="">Position</option>
+                        <select name="vocation" class="form-control form-control-md" id="vocation" required>
+                            <option value="">vocation</option>
                             <?php 
-                            $pos = $eed->customQuery("SELECT * FROM position ORDER BY position ASC");
+                            $pos = $eed->customQuery("SELECT * FROM vocation ORDER BY vocation ASC");
                                 $run_pos = $pos->fetchAll(PDO::FETCH_OBJ);
                                 foreach($run_pos as $post):
-                                    $position = ucwords($post->position);
+                                    $vocation = ucwords($post->vocation);
                             ?>
-                            <option value="<?php echo $position; ?>"><?php echo $position; ?></option>
+                            <option value="<?php echo $vocation; ?>"><?php echo $vocation; ?></option>
                             <?php endforeach; ?>
                         </select>
-                        <label for="position" class="small text-success">Position</label>
+                        <label for="vocation" class="small text-success">vocation</label>
                     </div>
                 </div>
                 <?php 

@@ -1,32 +1,32 @@
 <div class="card mb-4">
-    <div class="card-header"><i class="fas fa-plus mr-1"></i>Add New User</div>
+    <div class="card-header"><i class="fas fa-plus mr-1"></i>Add New Instructor</div>
     <div class="card-body">
         <form action="" method="post" id="add-user">
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="surname" class="form-control form-control-md" placeholder="Surname" id="surname" required>
+                        <input type="text" name="surname" class="form-control form-control-sm" placeholder="Surname" id="surname" required>
                         <label for="surname" class="small text-success">Enter Surname</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="firstname" class="form-control form-control-md" placeholder="First Name" id="firstname" required>
+                        <input type="text" name="firstname" class="form-control form-control-sm" placeholder="First Name" id="firstname" required>
                         <label for="firstname" class="small text-success">Enter First Name</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="midname" class="form-control form-control-md" placeholder="Middle Name" id="midname" required>
+                        <input type="text" name="midname" class="form-control form-control-sm" placeholder="Middle Name" id="midname" required>
                         <label for="midname" class="small text-success">Enter Middle Name</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="gender" class="form-control form-control-md" id="gender" required>
+                        <select name="gender" class="form-control form-control-sm" id="gender" required>
                             <option value="">Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -37,24 +37,35 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="department" class="form-control form-control-md" id="department" required>
-                            <option value="">Department</option>
-                            <?php 
-                                $query = $eed->customQuery("SELECT * FROM department ORDER BY department ASC");
-                                $run = $query->fetchAll(PDO::FETCH_OBJ);
-                                foreach($run as $dp):
-                                    $dept = ucwords($dp->department);
-                            ?>
-                            <option value="<?php echo $dept; ?>"><?php echo $dept; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="department" class="small text-success">Department</label>
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Eg. something@example.com" id="email">
+                        <label for="email" class="small text-success">E-mail</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="vocation" class="form-control form-control-md" id="vocation" required>
+                        <input type="text" name="username" class="form-control form-control-sm" placeholder="Username" id="username">
+                        <label for="username" class="small text-success">Username</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control form-control-sm" placeholder="Password" id="password">
+                        <label for="password" class="small text-success">Password</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <input type="phone" name="phone" class="form-control form-control-sm" placeholder="Phone number.." id="phone">
+                        <label for="phone" class="small text-success">Phone</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <select name="vocation" class="form-control form-control-sm" id="vocation" required>
                             <option value="">vocation</option>
                             <?php 
                             $pos = $eed->customQuery("SELECT * FROM vocation ORDER BY vocation ASC");
@@ -77,7 +88,7 @@
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" id="submit-add-user" type="submit"><i class="fas fa-plus"></i> Create User</button>
+                        <button class="btn btn-success btn-sm btn-block" id="submit-add-user" type="submit"><i class="fas fa-plus"></i> Add Instructor</button>
                     </div>
                 </div>
             </div>

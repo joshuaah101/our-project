@@ -45,13 +45,13 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Profile</div>
                             <a class="nav-link" href="admin.php?dashboard"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a>
                             <a class="nav-link" href="admin.php?view-user"><div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
-                            View User</a>
+                            View Instructors</a>
                             <a class="nav-link" href="admin.php?manage-user=add"><div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                            Manage User</a>
+                            Manage Instructors</a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -111,7 +111,7 @@
             <h5 class="mt-4"><a href="admin.php?manage-user=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h5>
             <h4><i class="fas fa-edit"></i> Edit User</h4>
             <ol class="breadcrumb mb-4 mt-3">
-                <li class="breadcrumb-item active"><i class="fas fa-edit"></i> <i>Edit a user</i></li>
+                <li class="breadcrumb-item active"><i class="fas fa-edit"></i> <i>Edit an Instructor</i></li>
                 <!-- <li class="breadcrumb-item"></li> -->
             </ol>
             
@@ -129,29 +129,29 @@
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="surname" class="form-control form-control-md" value="<?php echo $id->surname; ?>" id="surname" required>
+                        <input type="text" name="surname" class="form-control form-control-sm" value="<?php echo $id->surname; ?>" id="surname" required>
                         <label for="surname" class="small text-success">Update Surname</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="firstname" class="form-control form-control-md" value="<?php echo $id->firstname; ?>" id="firstname" required>
+                        <input type="text" name="firstname" class="form-control form-control-sm" value="<?php echo $id->firstname; ?>" id="firstname" required>
                         <label for="firstname" class="small text-success">Update First Name</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="midname" class="form-control form-control-md" value="<?php echo $id->midname; ?>" id="midname" required>
+                        <input type="text" name="midname" class="form-control form-control-sm" value="<?php echo $id->midname; ?>" id="midname" required>
                         <label for="midname" class="small text-success">Update Middle Name</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="gender" class="form-control form-control-md" id="gender" required>
-                            <option value="">Gender</option>
+                        <select name="gender" class="form-control form-control-sm" id="gender" required>
+                            <option value="<?php echo $id->gender; ?>"><?php echo $id->gender; ?> (Default)</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -161,25 +161,36 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="department" class="form-control form-control-md" id="dept" required>
-                            <option value="">Department</option>
-                            <?php 
-                                $query = $eed->customQuery("SELECT * FROM department ORDER BY department ASC");
-                                $run = $query->fetchAll(PDO::FETCH_OBJ);
-                                foreach($run as $dp):
-                                    $dept = ucwords($dp->department);
-                            ?>
-                            <option value="<?php echo $dept; ?>"><?php echo $dept; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="dept" class="small text-success">Update Department</label>
+                        <input type="email" name="email" value="<?php echo $id->email; ?>" class="form-control form-control-sm" id="email" required>
+                        <label for="email" class="small text-success">Update Email</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <select name="vocation" class="form-control form-control-md" id="vocation" required>
-                            <option value="">vocation</option>
+                        <input type="text" name="username" value="<?php echo $id->username; ?>" class="form-control form-control-sm" id="username" required>
+                        <label for="username" class="small text-success">Update Username</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <input type="password" name="password" value="<?php echo $id->password; ?>" class="form-control form-control-sm" id="email" required>
+                        <label for="password" class="small text-success">Update Password</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <input type="phone" name="phone" value="<?php echo $id->phone; ?>" class="form-control form-control-sm" id="phone" required>
+                        <label for="phone" class="small text-success">Update Phone</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="form-group">
+                        <select name="vocation" class="form-control form-control-sm" id="vocation" required>
+                            <option value="<?php echo $id->vocation; ?>"><?php echo $id->vocation; ?> (Default)</option>
                             <?php 
                             $pos = $eed->customQuery("SELECT * FROM vocation ORDER BY vocation ASC");
                                 $run_pos = $pos->fetchAll(PDO::FETCH_OBJ);
@@ -200,7 +211,7 @@
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" id="submit-update-user" type="submit"><i class="fas fa-edit"></i> Update User</button>
+                        <button class="btn btn-success btn-block btn-sm" id="submit-update-user" type="submit"><i class="fas fa-edit"></i> Update Instructor</button>
                     </div>
                 </div>
             </div>

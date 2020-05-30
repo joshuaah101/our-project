@@ -6,7 +6,7 @@
 		$username = $eed->sanitizeString($_POST['username']);
 		$password = $eed->sanitizeString($_POST['password']);
 		//setting admin key to 1 and otherwise instructor
-		$_SESSION['is_admin'] = 1;
+
 		$_SESSION['tracking_id'] = $username;
 
 		$login = array(

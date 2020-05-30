@@ -45,54 +45,50 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <div class="sb-sidenav-menu-heading">Dashboard</div>
                             <a class="nav-link" href="instructor.php?dashboard"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a>
-                            <a class="nav-link" href="instructor.php?view-materials"><div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
-                            View Materials</a>
-                            <a class="nav-link" href="instructor.php?manage-materials=add"><div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                            Manage Materials</a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                            ></a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
-                                ><div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                            ></a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth"
-                                        >Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="login.html">Login</a><a class="nav-link" href="register.html">Register</a><a class="nav-link" href="password.html">Forgot Password</a></nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError"
-                                        >Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-                                    ></a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="401.html">401 Page</a><a class="nav-link" href="404.html">404 Page</a><a class="nav-link" href="500.html">500 Page</a></nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    Charts
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMaterialsMgt" aria-expanded="false" aria-controls="collapseMaterialsMgt">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Materials Mgt.
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    Tables
+                            <div class="collapse" id="collapseMaterialsMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="?view-materials"><i class="fas fa-eye"></i>&nbsp; View Materials</a>
+                                <a class="nav-link" href="?manage-materials=add"><i class="fas fa-cogs"></i>&nbsp; Manage Mat.</a>
+                            </nav>
+                            </div>
+
+
+                            <div class="sb-sidenav-menu-heading">
+                            <?php  
+                                $user = $eed->customQuery("SELECT * FROM instructor WHERE username = '{$user_tracking_id}' LIMIT 1");
+                                $user = $user->fetchAll(PDO::FETCH_OBJ);
+                                foreach($user as $u):
+                                    $admin_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".substr($u->midname, 0,1).".";
+                                    echo $admin_name;
+                                    $username = $u->username;
+                                    $full_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".ucfirst($u->midname);
+                                    $email = $u->email;
+                                    $gender = $u->gender;
+                                    $phone = $u->phone;
+                                    $password = $u->password;
+                                endforeach;
+                            ?>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Profile
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+
+                            <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
+                                <a class="nav-link" href="?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
+                            </nav>
+                            </div>
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                                     Logout

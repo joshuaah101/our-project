@@ -7,8 +7,11 @@
 		$midname = ucfirst($eed->sanitizeString($_POST['midname']));
 		$gender = $eed->sanitizeString($_POST['gender']);
 		$user_id = $eed->sanitizeString($_POST['user_id']);
-		$department = $eed->sanitizeString($_POST['department']);
 		$vocation = $eed->sanitizeString($_POST['vocation']);
+		$email = $eed->sanitizeEmail($_POST['email']);
+		$username = $eed->sanitizeString($_POST['username']);
+		$phone = $eed->sanitizeString($_POST['phone']);
+		$password = $eed->sanitizeString($_POST['password']);
 		
 		$inst = array(
 			"surname" => $surname,
@@ -16,8 +19,11 @@
 			"midname" => $midname,
 			"gender" => $gender,
 			"user_id" => $user_id,
-			"department" => $department,
-			"vocation" => $vocation
+			"vocation" => $vocation,
+			"username" => $username,
+			"password" => $password,
+			"email" => $email,
+			"phone" => $phone
 		);
 
 		$inst = (object)$inst;

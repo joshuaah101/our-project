@@ -56,14 +56,14 @@ $(document).ready(function(){
 				if(req == 502){
 					$(".add-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Authenticating...</pre>");
 					setTimeout(function(){
-						$(".add-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> User already exist!</pre>");
+						$(".add-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Instructor already exist!</pre>");
 						location.href = "admin.php?manage-user=add";
 					}, 4000);
 					$("#add-user").trigger("reset");
 				}else if(req == 200){
 					$(".add-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Authenticating...</pre>");
 					setTimeout(function(){
-						$(".add-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> User Added Successfully!</pre>");
+						$(".add-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> Instructor Added Successfully!</pre>");
 						location.href = "admin.php?manage-user=add";
 					}, 4000);
 					$("#add-user").trigger("reset");

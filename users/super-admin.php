@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="FPI Programmers Hub Executive 2019/2020 set" />
-        <title>Dashboard - FPI EED Admin</title>
+        <title>Dashboard - FPI EED Super Admin</title>
         <link href="../asset/css/styles.css" rel="stylesheet" />
         <link href="../asset/css/eed.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -49,6 +49,17 @@
                             <a class="nav-link" href="admin.php?dashboard"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a>
 
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminMgt" aria-expanded="false" aria-controls="collapseAdminMgt">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Admin Mgt.
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseAdminMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
+                                <a class="nav-link" href="?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
+                            </nav>
+                            </div>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInstructorMgt" aria-expanded="false" aria-controls="collapseInstructorMgt">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
@@ -57,13 +68,13 @@
                             </a>
                             <div class="collapse" id="collapseInstructorMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="admin.php?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
-                                <a class="nav-link" href="admin.php?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
+                                <a class="nav-link" href="?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
+                                <a class="nav-link" href="?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
                             </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">
                             <?php  
-                                $user = $eed->customQuery("SELECT * FROM admin WHERE username = '{$user_tracking_id}' LIMIT 1");
+                                $user = $eed->customQuery("SELECT * FROM super_admin WHERE username = '{$user_tracking_id}' LIMIT 1");
                                 $user = $user->fetchAll(PDO::FETCH_OBJ);
                                 foreach($user as $u):
                                     $admin_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".substr($u->midname, 0,1).".";
@@ -85,8 +96,8 @@
 
                             <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="admin.php?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
-                                <a class="nav-link" href="admin.php?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
+                                <a class="nav-link" href="?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
+                                <a class="nav-link" href="?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
                             </nav>
                             </div>
 

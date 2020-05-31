@@ -11,14 +11,14 @@
 		$phone = $eed->sanitizeString($_POST['phone']);
 		$username = $eed->sanitizeString($_POST['username']);
 		$password = $eed->sanitizeString($_POST['password']);
-		$user_id = $eed->sanitizeString($_POST['user_id']);
+		$uid = $eed->sanitizeString($_POST['uid']);
 		
 		$inst = array(
 			"surname" => $surname,
 			"firstname" => $firstname,
 			"midname" => $midname,
 			"gender" => $gender,
-			"user_id" => $user_id,
+			"uid" => $uid,
 			"email" => $email,
 			"vocation" => $vocation,
 			"phone" => $phone,

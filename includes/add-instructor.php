@@ -37,31 +37,33 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Eg. something@example.com" id="email">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="Eg. something@example.com" id="email" required>
                         <label for="email" class="small text-success">E-mail</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="username" class="form-control form-control-sm" placeholder="Username" id="username">
+                        <input type="text" name="username" class="form-control form-control-sm" placeholder="Username" id="username" required>
                         <label for="username" class="small text-success">Username</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control form-control-sm" placeholder="Password" id="password">
+                        <input type="password" name="password" class="form-control form-control-sm" placeholder="Password" id="password" required>
                         <label for="password" class="small text-success">Password</label>
                     </div>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="phone" name="phone" class="form-control form-control-sm" placeholder="Phone number.." id="phone">
+                        <input type="phone" name="phone" class="form-control form-control-sm" placeholder="Phone number.." id="phone" required>
                         <label for="phone" class="small text-success">Phone</label>
                     </div>
                 </div>
+
+                <input type="hidden" name="role" value="0">
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
@@ -82,7 +84,7 @@
                 <?php 
                     $id_prefix = "FPI/EED/INST/";
                  ?>
-                <input type="hidden" name="user_id" value="<?php echo $id_prefix.mt_rand(11111111,99999999);  ?>">
+                <input type="hidden" name="uid" value="<?php echo $id_prefix.mt_rand(11111111,99999999);  ?>">
             </div>
 
             <div class="form-row">

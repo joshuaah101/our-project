@@ -26,13 +26,18 @@ class Db{
 		return $this->stmt;
 	}
 
+	public function addUserLogin($data){
+		$this->stmt = $this->conn->query("INSERT INTO user_login(uid, username, password, is_admin) VALUES('{$data->uid}','{$data->username}','{$data->password}','{$data->role}')");
+		return $this->stmt;
+	}
+
 	public function addUser($data){
-		$this->stmt = $this->conn->query("INSERT INTO instructor(uid, surname, firstname, midname, gender, email, username, password, phone, vocation) VALUES('{$data->user_id}','{$data->surname}','{$data->firstname}','{$data->midname}','{$data->gender}','{$data->email}','{$data->username}','{$data->password}','{$data->phone}','{$data->vocation}')");
+		$this->stmt = $this->conn->query("INSERT INTO users(uid, surname, firstname, midname, gender, email, username, password, phone, vocation,role) VALUES('{$data->uid}','{$data->surname}','{$data->firstname}','{$data->midname}','{$data->gender}','{$data->email}','{$data->username}','{$data->password}','{$data->phone}','{$data->vocation}','{$data->role}')");
 		return $this->stmt;
 	}
 
 	public function updateUser($data){
-		$this->stmt = $this->conn->query("UPDATE instructor SET surname = '{$data->surname}', firstname = '{$data->firstname}', midname = '{$data->midname}', gender = '{$data->gender}', vocation = '{$data->vocation}', username = '{$data->username}', password = '{$data->password}', phone = '{$data->phone}', email = '{$data->email}' WHERE uid = '{$data->user_id}'");
+		$this->stmt = $this->conn->query("UPDATE users SET surname = '{$data->surname}', firstname = '{$data->firstname}', midname = '{$data->midname}', gender = '{$data->gender}', vocation = '{$data->vocation}', username = '{$data->username}', password = '{$data->password}', phone = '{$data->phone}', email = '{$data->email}' WHERE uid = '{$data->uid}'");
 		return $this->stmt;
 	}
 }

@@ -57,13 +57,13 @@
                             </a>
                             <div class="collapse" id="collapseInstructorMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="admin.php?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
-                                <a class="nav-link" href="admin.php?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
+                                <a class="nav-link" href="admin.php?view-instructor"><i class="fas fa-eye"></i>&nbsp; View all</a>
+                                <a class="nav-link" href="admin.php?manage-instructor=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
                             </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">
                             <?php  
-                                $user = $eed->customQuery("SELECT * FROM admin WHERE username = '{$user_tracking_id}' LIMIT 1");
+                                $user = $eed->customQuery("SELECT * FROM users WHERE username = '{$user_tracking_id}' LIMIT 1");
                                 $user = $user->fetchAll(PDO::FETCH_OBJ);
                                 foreach($user as $u):
                                     $admin_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".substr($u->midname, 0,1).".";
@@ -74,6 +74,7 @@
                                     $gender = $u->gender;
                                     $phone = $u->phone;
                                     $password = $u->password;
+                                    $uid = $u->uid;
                                 endforeach;
                             ?>
                             </div>
@@ -86,7 +87,7 @@
                             <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="admin.php?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
-                                <a class="nav-link" href="admin.php?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
+                                <a class="nav-link" href="admin.php?change-password"><i class="fas fa-lock"></i>&nbsp; Edit Password</a>
                             </nav>
                             </div>
 
@@ -118,10 +119,10 @@
             <?php 
             if(isset($_GET['dashboard'])){
                 include '../includes/dashboard.php';
-            }elseif(isset($_GET['manage-user'])){
-                include '../includes/manage-user.php';
-            }elseif(isset($_GET['view-user'])){
-                include '../includes/view-user.php';
+            }elseif(isset($_GET['manage-instructor'])){
+                include '../includes/manage-instructor.php';
+            }elseif(isset($_GET['view-instructor'])){
+                include '../includes/view-instructor.php';
             }elseif(isset($_GET['profile'])){
                 include '../includes/admin-profile.php';
             }elseif(isset($_GET['change-password'])){

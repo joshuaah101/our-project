@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="FPI Programmers Hub Executive 2019/2020 set" />
-        <title>Dashboard - FPI EED Admin</title>
+        <title>Dashboard - FPI EED Super Admin</title>
         <link href="../asset/css/eed.css" rel="stylesheet" />
         <link href="../asset/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -108,10 +108,10 @@
     <div id="layoutSidenav_content">
         <main>
         <div class="container-fluid">
-            <h5 class="mt-4"><a href="admin.php?manage-user=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h5>
-            <h4><i class="fas fa-edit"></i> Edit User</h4>
+            <h5 class="mt-4"><a href="super-admin.php?manage-admin=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h5>
+            <h4><i class="fas fa-edit"></i> Edit Admin</h4>
             <ol class="breadcrumb mb-4 mt-3">
-                <li class="breadcrumb-item active"><i class="fas fa-edit"></i> <i>Edit an Instructor</i></li>
+                <li class="breadcrumb-item active"><i class="fas fa-edit"></i> <i>Edit an Admin</i></li>
                 <!-- <li class="breadcrumb-item"></li> -->
             </ol>
             
@@ -121,7 +121,7 @@
             <?php 
                 if(isset($_GET['edit'])){
                 $id = $_GET['edit'];
-                $id_check = $eed->customQuery("SELECT * FROM instructor WHERE uid = '{$id}' LIMIT 1");
+                $id_check = $eed->customQuery("SELECT * FROM users WHERE uid = '{$id}' LIMIT 1");
                 $run = $id_check->fetchAll(PDO::FETCH_OBJ);
                 foreach($run as $id):
                
@@ -175,7 +175,7 @@
 
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <input type="password" name="password" value="<?php echo $id->password; ?>" class="form-control form-control-sm" id="email" required>
+                        <input type="password" name="password" value="<?php echo $id->password; ?>" class="form-control form-control-sm" id="password" required>
                         <label for="password" class="small text-success">Update Password</label>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
                         <select name="vocation" class="form-control form-control-sm" id="vocation" required>
-                            <option value="<?php echo $id->vocation; ?>"><?php echo $id->vocation; ?> (Default)</option>
+                            <option selected=""><?php echo $id->vocation; ?> (Default)</option>
                             <?php 
                             $pos = $eed->customQuery("SELECT * FROM vocation ORDER BY vocation ASC");
                                 $run_pos = $pos->fetchAll(PDO::FETCH_OBJ);
@@ -204,14 +204,14 @@
                     </div>
                 </div>
                
-            <input type="hidden" name="user_id" value="<?php echo $id->uid; ?>">
+            <input type="hidden" name="uid" value="<?php echo $id->uid; ?>">
             </div>
             <?php endforeach; } ?>
 
             <div class="form-row">
                 <div class="col-sm-12 col-md-4">
                     <div class="form-group">
-                        <button class="btn btn-success btn-block btn-sm" id="submit-update-user" type="submit"><i class="fas fa-edit"></i> Update Instructor</button>
+                        <button class="btn btn-success btn-block btn-sm" id="submit-update-user" type="submit"><i class="fas fa-edit"></i> Update Admin</button>
                     </div>
                 </div>
             </div>

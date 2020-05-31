@@ -1,9 +1,9 @@
 <div class="card mb-4">
     <?php  
-        $ins = $eed->customQuery("SELECT * FROM instructor");
+        $ins = $eed->customQuery("SELECT * FROM users WHERE role = '1'");
         $total = $ins->rowCount();
     ?>
-    <div class="card-header"><i class="fas fa-edit mr-1"></i>Modify an Instructor | Total Instructor - <span class="text-success"><?php echo $total ?></span></div>
+    <div class="card-header"><i class="fas fa-edit mr-1"></i>Modify an Admin | Total Admin - <span class="text-success"><?php echo $total ?></span></div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -12,7 +12,6 @@
                         <th>Full Name</th>
                         <th>Username</th>
                         <th>Gender</th>
-                        <th>Vocation</th>
                         <th>Phone</th>
                         <th>E-mail</th>
                         <th>Action</th>
@@ -21,7 +20,7 @@
            
                 <tbody>
                     <?php 
-                    $query = $eed->customQuery("SELECT * FROM instructor ORDER BY surname ASC");
+                    $query = $eed->customQuery("SELECT * FROM users WHERE role = '1' ORDER BY surname ASC");
                     $run = $query->fetchAll(PDO::FETCH_OBJ);
                     foreach($run as $ins):
                     ?>
@@ -29,10 +28,9 @@
                         <td><?php echo $ins->surname." ".$ins->firstname." ".substr($ins->midname,0,1)."."; ?></td>
                         <td><?php echo $ins->username; ?></td>
                         <td><?php echo $ins->gender; ?></td>
-                        <td><?php echo $ins->vocation; ?></td>
                         <td><?php echo $ins->phone; ?></td>
                         <td><?php echo $ins->email; ?></td>
-                        <td><a href="edit-user.php?edit=<?php echo $ins->uid; ?>" class="btn  btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> <a href="?manage-user=modify&delete=<?php echo $ins->uid; ?>" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a></td>
+                        <td><a href="edit-admin.php?edit=<?php echo $ins->uid; ?>" class="btn  btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> <a href="?manage-Admin=modify&delete=<?php echo $ins->uid; ?>" class="btn  btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
@@ -42,11 +40,11 @@
         <?php 
             if(isset($_GET['delete'])){
                 $delete_key = $_GET['delete'];
-                $delete = $eed->customQuery("DELETE FROM instructor WHERE uid = '{$delete_key}'");
+                $delete = $eed->customQuery("DELETE FROM users WHERE uid = '{$delete_key}'");
                 if($delete){
                     echo "<script>
-                    alert('User Deleted Successfully');
-                    location.href = 'admin.php?manage-user=modify';
+                    alert('Admin Deleted Successfully');
+                    location.href = '?manage-admin=modify';
                     </script>";
                 }
             }

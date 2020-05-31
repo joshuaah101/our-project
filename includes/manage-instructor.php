@@ -3,17 +3,17 @@
         <div class="container-fluid">
             <h4 class="mt-4"><i class="fas fa-cogs"></i> Manage Instructor</h4>
             <ol class="breadcrumb mb-4 mt-3">
-                <li class="breadcrumb-item active"><a href="?manage-user=add" class="text-center btn btn-success text-white"><i class="fas fa-plus-square"></i> Add an instructor</a></li>
-                <li class="breadcrumb-item"><a href="?manage-user=modify" class="text-center btn btn-warning text-success"><i class="fas fa-edit"></i> Modify an instructor</a></li>
+                <li class="breadcrumb-item active"><a href="?manage-instructor=add" class="text-center btn btn-success text-white"><i class="fas fa-plus-square"></i> Add an instructor</a></li>
+                <li class="breadcrumb-item"><a href="?manage-instructor=modify" class="text-center btn btn-warning text-success"><i class="fas fa-edit"></i> Modify an instructor</a></li>
             </ol>
          
             <?php 
-                if(isset($_GET['manage-user'])){
-                    $action = $_GET['manage-user'];
+                if(isset($_GET['manage-instructor'])){
+                    $action = $_GET['manage-instructor'];
                     if($action == 'add'){
-                        include 'add-user.php';
+                        include 'add-instructor.php';
                     }if($action == 'modify'){
-                        include 'modify-user.php';
+                        include 'modify-instructor.php';
                     }
                 }
             ?>

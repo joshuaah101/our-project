@@ -56,22 +56,22 @@ $(document).ready(function(){
 				if(req == 502){
 					$(".add-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Authenticating...</pre>");
 					setTimeout(function(){
-						$(".add-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Instructor already exist!</pre>");
-						location.href = "admin.php?manage-user=add";
+						$(".add-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Already exist!</pre>");
+						location.href = "?manage-instructor=add";
 					}, 4000);
 					$("#add-user").trigger("reset");
 				}else if(req == 200){
 					$(".add-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Authenticating...</pre>");
 					setTimeout(function(){
-						$(".add-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> Instructor Added Successfully!</pre>");
-						location.href = "admin.php?manage-user=add";
+						$(".add-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i>Added Successfully!</pre>");
+						location.href = "?manage-instructor=add";
 					}, 4000);
 					$("#add-user").trigger("reset");
 				}else if(req == 404){
 					$(".add-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'> <i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Authenticating...</pre>");
 					setTimeout(function(){
 						$(".add-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Failed, try again</pre>");
-						location.href = "admin.php?manage-user=add";
+						location.href = "?manage-instructor=add";
 					}, 4000);
 					$("#add-user").trigger("reset");
 				};
@@ -101,14 +101,12 @@ $("#update-user").on("submit", function(e){
 					$(".update-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
 					setTimeout(function(){
 						$(".update-user-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> User Details Updated!</pre>");
-						location.href = "admin.php?manage-user=modify";
 					}, 4000);
 					$("#update-user").trigger("reset");
 				}else if(req == 300){
 					$(".update-user-notify").fadeIn(2000).html("<pre class='small notify-success text-center'> <i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
 					setTimeout(function(){
 						$(".update-user-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> An Error Occurred, try again</pre>");
-						location.href = "admin.php?manage-user=modify";
 					}, 4000);
 					$("#update-user").trigger("reset");
 				};
@@ -117,5 +115,51 @@ $("#update-user").on("submit", function(e){
 				console.log(error);
 			}
 		})
+	});
+
+	$("#change-password-form").on("submit", function(form){
+		form.preventDefault();
+		var data = $(this).serialize();
+		$("#change-password-btn").addClass("disabled");
+		$.ajax({
+			url : "../ajax-files/change-password-api.php",
+			data : data,
+			cache : false,
+			type : 'POST',
+			beforeSend : function(){
+				console.log("Verifying Data");
+			},
+			success : function(xhr){
+				console.log(xhr);
+				var res = $.trim(xhr);
+				if(res == 200){
+					$(".change-password-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
+					setTimeout(function(){
+						$(".change-password-notify").html("<pre class='small notify-success text-center'><i class='fas fa-thumbs-up'></i> Password changed successfully!</pre>");
+						location.href = "?profile";
+					}, 4000);
+					$("#change-password-form").trigger("reset");
+				}else if(res == 300){
+					$(".change-password-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
+					setTimeout(function(){
+						$(".change-password-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Wrong Password!</pre>");
+						location.href = "?change-password";
+					}, 4000);
+					$("#change-password-form").trigger("reset");
+				}else if(res == 400){
+					$(".change-password-notify").fadeIn(2000).html("<pre class='small notify-success text-center'><i class='spinner-border' style='width: 1rem; height: 1rem;'></i> Checking Status, Please Wait !!...</pre>");
+					setTimeout(function(){
+						$(".change-password-notify").html("<pre class='small notify-error text-center'><i class='fas fa-thumbs-down'></i> Error! passwords does not match</pre>");
+						location.href = "?change-password";
+					}, 4000);
+					$("#change-password-form").trigger("reset");
+				}else{
+
+				}
+			},
+			error : function(error){
+				console.log(error);
+			}
+		});
 	});
 });

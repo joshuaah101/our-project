@@ -37,13 +37,6 @@
                 					<td><input type="text" readonly value="<?php echo $username; ?>" class="form-control form-control-sm"></td>
                 				</tr>
                 			</tbody>
-                			<tfoot>
-                				<tr>
-                					<td>
-                						<a href="?change-password" class="btn btn-warning btn-block">Change Password</a>
-                					</td>		
-                				</tr>
-                			</tfoot>
                 		</table>
                 	</div>
                 </div>

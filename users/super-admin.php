@@ -18,7 +18,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="admin.php?dashboard">FPI EED - <?php echo $_SESSION['user_role']; ?></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="super-admin.php?dashboard">FPI EED - <?php echo $_SESSION['user_role']; ?></a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
             ><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -46,7 +46,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Dashboard</div>
-                            <a class="nav-link" href="admin.php?dashboard"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <a class="nav-link" href="super-admin.php?dashboard"><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdminMgt" aria-expanded="false" aria-controls="collapseAdminMgt">
@@ -56,8 +56,8 @@
                             </a>
                             <div class="collapse" id="collapseAdminMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
-                                <a class="nav-link" href="?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
+                                <a class="nav-link" href="?view-admin"><i class="fas fa-eye"></i>&nbsp; View all</a>
+                                <a class="nav-link" href="?manage-admin=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
                             </nav>
                             </div>
 
@@ -68,13 +68,13 @@
                             </a>
                             <div class="collapse" id="collapseInstructorMgt" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="?view-user"><i class="fas fa-eye"></i>&nbsp; View all</a>
-                                <a class="nav-link" href="?manage-user=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
+                                <a class="nav-link" href="?view-instructor"><i class="fas fa-eye"></i>&nbsp; View all</a>
+                                <a class="nav-link" href="?manage-instructor=add"><i class="fas fa-cogs"></i>&nbsp; Manage</a>
                             </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">
                             <?php  
-                                $user = $eed->customQuery("SELECT * FROM super_admin WHERE username = '{$user_tracking_id}' LIMIT 1");
+                                $user = $eed->customQuery("SELECT * FROM users WHERE username = '{$user_tracking_id}' LIMIT 1");
                                 $user = $user->fetchAll(PDO::FETCH_OBJ);
                                 foreach($user as $u):
                                     $admin_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".substr($u->midname, 0,1).".";
@@ -85,6 +85,7 @@
                                     $gender = $u->gender;
                                     $phone = $u->phone;
                                     $password = $u->password;
+                                    $uid = $u->uid;
                                 endforeach;
                             ?>
                             </div>
@@ -97,7 +98,7 @@
                             <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
-                                <a class="nav-link" href="?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
+                                <a class="nav-link" href="?change-password"><i class="fas fa-lock"></i>&nbsp; Edit Password</a>
                             </nav>
                             </div>
 
@@ -129,14 +130,18 @@
             <?php 
             if(isset($_GET['dashboard'])){
                 include '../includes/dashboard.php';
-            }elseif(isset($_GET['manage-user'])){
-                include '../includes/manage-user.php';
-            }elseif(isset($_GET['view-user'])){
-                include '../includes/view-user.php';
+            }elseif(isset($_GET['manage-instructor'])){
+                include '../includes/manage-instructor.php';
+            }elseif(isset($_GET['view-instructor'])){
+                include '../includes/view-instructor.php';
             }elseif(isset($_GET['profile'])){
-                include '../includes/admin-profile.php';
+                include '../includes/s-admin-profile.php';
             }elseif(isset($_GET['change-password'])){
                 include '../includes/change-password.php';
+            }elseif(isset($_GET['view-admin'])){
+                include '../includes/view-admin.php';
+            }elseif(isset($_GET['manage-admin'])){
+                include '../includes/manage-admin.php';
             }
             ?>
         </div>

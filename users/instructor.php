@@ -63,7 +63,7 @@
 
                             <div class="sb-sidenav-menu-heading">
                             <?php  
-                                $user = $eed->customQuery("SELECT * FROM instructor WHERE username = '{$user_tracking_id}' LIMIT 1");
+                                $user = $eed->customQuery("SELECT * FROM users WHERE username = '{$user_tracking_id}' LIMIT 1");
                                 $user = $user->fetchAll(PDO::FETCH_OBJ);
                                 foreach($user as $u):
                                     $admin_name = ucfirst($u->surname). " ".ucfirst($u->firstname)." ".substr($u->midname, 0,1).".";
@@ -74,6 +74,7 @@
                                     $gender = $u->gender;
                                     $phone = $u->phone;
                                     $password = $u->password;
+                                    $uid = $u->uid;
                                 endforeach;
                             ?>
                             </div>
@@ -86,7 +87,7 @@
                             <div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="?profile"><i class="fas fa-eye"></i>&nbsp; View Profile</a>
-                                <a class="nav-link" href="?change-password"><i class="fas fa-cogs"></i>&nbsp; Edit Profile</a>
+                                <a class="nav-link" href="?change-password"><i class="fas fa-lock"></i>&nbsp; Edit Password</a>
                             </nav>
                             </div>
                             <a class="nav-link" href="logout.php">
@@ -110,6 +111,10 @@
                 include '../includes/manage-materials.php';
             }elseif(isset($_GET['view-materials'])){
                 include '../includes/view-materials.php';
+            }elseif(isset($_GET['profile'])){
+                include '../includes/instructor-profile.php';
+            }elseif(isset($_GET['change-password'])){
+                include '../includes/change-password.php';
             }
             ?>
         </div>

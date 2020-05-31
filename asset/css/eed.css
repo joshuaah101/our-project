@@ -7,7 +7,10 @@ label{
 	color: #fff;
 }
 
-.notify, .add-user-notify, .update-user-notify{
+.notify,
+.add-user-notify,
+.update-user-notify,
+.change-password-notify{
 	height: 50px;
 	margin-top: 2%;
 }

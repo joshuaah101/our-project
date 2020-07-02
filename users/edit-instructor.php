@@ -41,7 +41,7 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+            <!-- <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -104,7 +104,7 @@
                         <?php echo ucfirst($user_tracking_id); ?>
                     </div>
                 </nav>
-            </div>
+            </div> -->
     <div id="layoutSidenav_content">
         <main>
         <div class="container-fluid">

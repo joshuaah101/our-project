@@ -27,8 +27,9 @@
 		);
 
 		$inst = (object)$inst;
-		$update = $eed->updateUser($inst);
-			if($update){
+		$update1 = $eed->updateUser($inst);
+		$update2 = $eed->updateUserLogin($inst);
+			if($update1 && $update2){
 				$response .= 200;
 			}else{
 				$response .= 300;

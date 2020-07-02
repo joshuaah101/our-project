@@ -40,6 +40,11 @@ class Db{
 		$this->stmt = $this->conn->query("UPDATE users SET surname = '{$data->surname}', firstname = '{$data->firstname}', midname = '{$data->midname}', gender = '{$data->gender}', vocation = '{$data->vocation}', username = '{$data->username}', password = '{$data->password}', phone = '{$data->phone}', email = '{$data->email}' WHERE uid = '{$data->uid}'");
 		return $this->stmt;
 	}
+
+	public function updateUserLogin($data){
+		$this->stmt = $this->conn->query("UPDATE user_login SET username = '{$data->username}', password = '{$data->password}' WHERE uid = '{$data->uid}'");
+		return $this->stmt;
+	}
 }
 
 ?>

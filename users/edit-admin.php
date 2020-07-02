@@ -41,7 +41,9 @@
             </ul>
         </nav>
         <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
+
+        </div>
+            <!-- <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -104,9 +106,10 @@
                         <?php echo ucfirst($user_tracking_id); ?>
                     </div>
                 </nav>
-            </div>
+            </div> -->
+            <div class="container">
     <div id="layoutSidenav_content">
-        <main>
+        <main style="margin-top: 10%;">
         <div class="container-fluid">
             <h5 class="mt-4"><a href="super-admin.php?manage-admin=modify" class="btn btn-danger"><i class="fas fa-chevron-left"></i> Go Back</a></h5>
             <h4><i class="fas fa-edit"></i> Edit Admin</h4>
@@ -186,23 +189,8 @@
                         <label for="phone" class="small text-success">Update Phone</label>
                     </div>
                 </div>
-
-                <div class="col-sm-12 col-md-4">
-                    <div class="form-group">
-                        <select name="vocation" class="form-control form-control-sm" id="vocation" required>
-                            <option selected=""><?php echo $id->vocation; ?> (Default)</option>
-                            <?php 
-                            $pos = $eed->customQuery("SELECT * FROM vocation ORDER BY vocation ASC");
-                                $run_pos = $pos->fetchAll(PDO::FETCH_OBJ);
-                                foreach($run_pos as $post):
-                                    $vocation = ucwords($post->vocation);
-                            ?>
-                            <option value="<?php echo $vocation; ?>"><?php echo $vocation; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="vocation" class="small text-success">Update Vocation</label>
-                    </div>
-                </div>
+                    
+                        <input type="hidden" name="vocation" value="">
                
             <input type="hidden" name="uid" value="<?php echo $id->uid; ?>">
             </div>
@@ -226,21 +214,12 @@
 </div>
 </div>
     </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">THE FEDERAL POLYTECHNIC ILARO, &copy; <?php echo date("Y"); ?></div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
 </div>
-</div><?php
-            }else{
+
+</div>
+<?php
+        }else{
                 echo "<script>location.href = '../index.php'</script>";
             }
         ?>
